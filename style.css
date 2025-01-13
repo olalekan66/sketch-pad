@@ -85,8 +85,6 @@ body{
 }
 #black{
     order: 2;
-    background-color: #010225;
-    color: aliceblue;
     transform: transform 0.2s ease-in-out;
 }
 #black:hover{

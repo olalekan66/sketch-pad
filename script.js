@@ -1,11 +1,11 @@
 const container = document.querySelector('.container');
 const redbtn = document.createElement('button');
-const blackbtn = document.createElement('button');
+const rgbbtn = document.createElement('button');
 const bluebtn = document.createElement('button');
 const resize = document.createElement('button');
 const buttons = document.querySelector('.buttons');
 redbtn.setAttribute('id', 'red');
-blackbtn.setAttribute('id', 'black');
+rgbbtn.setAttribute('id', 'black');
 bluebtn.setAttribute('id', 'blue');
 resize.setAttribute('id', 'reset');
 resize.textContent = 'RESET';
@@ -44,13 +44,17 @@ function redcolor(){
 
 function blackcolor(){
     const boxes = document.querySelectorAll('.row')
-    blackbtn.textContent ='BLACK';
-    blackbtn.addEventListener('click', () =>{
+    rgbbtn.textContent ='RGB';
+    rgbbtn.addEventListener('click', () =>{
         boxes.forEach(box => box.addEventListener('mouseover', () => {
-            box.style.background = 'black';
+            let r = Math.floor(Math.random() * 256);
+            let g = Math.floor(Math.random() * 256);
+            let b = Math.floor(Math.random() * 256);
+            rgb = `rgb(${r}, ${g}, ${b})`
+            box.style.background = rgb;
         }));
     });
-    buttons.appendChild(blackbtn).classList.add('btn');
+    buttons.appendChild(rgbbtn).classList.add('btn');
 };
 
 
@@ -82,9 +86,13 @@ function reset(){
             Remove();
             creategrid(16);
         }
-        else{
+        else if(request < 100){
             Remove();
             creategrid(request);
+        }
+        else{
+            alert('number too big, pls enter a number less than 100');
+            reset();
         }
     });
 }
